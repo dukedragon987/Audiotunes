@@ -9,9 +9,10 @@ public class Audio {
   }  
 
 static void playTwinkle(int beatsPerMinute){
-  int[] notes = {StdMidi.C4, StdMidi.C4, StdMidi.G4, StdMidi.A4, StdMidi.A4};
+  int[] notes = {StdMidi.C4, StdMidi.C4, StdMidi.G4, StdMidi.A4, StdMidi.A4,StdMidi.C4};
+  int [] duration = {1, 1, 1,1,2,1,1,2};
   for (int i = 0; i < notes.length; i++){
-     StdMidi.playNote(notes[i], 1);
+     StdMidi.playNote(notes[i], duration);
   }
  
 }
