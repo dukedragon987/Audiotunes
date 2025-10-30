@@ -1,44 +1,41 @@
+import java.util.Scanner;
+
 
 public class Audio {
-  public static void main(String[] args) {
-    System.out.println("Hello welcome to audio tunes just wait and listen");
-   playTwinkle(60);
-   StdMidi.pause(2);
-   oCanada(100);
-
-  }  
-
-static void playTwinkle(int beatsPerMinute){
-  String[] notesString = {"G4","A4","G4", };
-  int[] notesCode = new int[notesString.length];
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("First enter your numbe of notes, than enter you notes on a different line");
 
 
-  
-   int [] duration = {1,1,1,1,1,1,1,1,1,1,1,};
+        int length = Integer.parseInt(sc.nextLine());
+        String[] notes = new String[length];
+        int[] duration = {1, 1, 1, 1, 1, 1, 1, 1, 1};
 
-   for ( int i =0; i< notesCode.length;i++){
-    notesCode[i] = Notes.getNoteCode(notesString[i]);
-   }
-           for (int i = 0; i < notesString.length; i++) {
-           
-           StdMidi.playNote(notesCode[i], duration[i]);
+
+        for (int i = 0; i < notes.length; i++) {
+            notes[i] = sc.nextLine();
+        }
+       
+        // String[] notes = {"A4", "G4" ,"C4", "F4", "E4", "C4"};
+        int[] noteCodes = new int[notes.length];
+
+
+        for (int i = 0; i < noteCodes.length; i++) {
+            noteCodes[i] = Notes.getNoteCode(notes[i]);
+        }
+
+
+        StdMidi.noteOn(0);
+        StdMidi.setInstrument(30);
+        StdMidi.setTempo(60);
+
+
+        for (int i = 0; i < notes.length; i++) {
+   
+           StdMidi.playNote(noteCodes[i], duration[i]);
         }
        
     }
-
-
- 
-
-static void oCanada(int beatsPerMinute){
-    StdMidi.noteOn(10);
-    StdMidi.setTempo(60);
-    StdMidi.setInstrument(70);
-    StdMidi.playNote(StdMidi.G5, beatsPerMinute);
-
 }
 
-@Override
-public String toString() {
-  return "Audio []";
-}
-}
+
