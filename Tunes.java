@@ -22,4 +22,21 @@ public class Tunes{
         
         return noteCodes;
     }
-}
+
+
+    
+
+    public static void playFile(int filename) {
+        
+       
+    }
+
+
+    public static String happyBirthday(int i) {
+      String line = "C4 C4 D4 C4 F4 C4 C4 D4 C4 G4 C4 C4 C5 A4 F4 E4 D4 D4 C4 G4 F4";
+        return line;
+    }
+
+
+        
+    }
