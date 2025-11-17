@@ -1,40 +1,44 @@
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-class App {
-    /**
-     * @param args
-     * @throws FileNotFoundException
-     */
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Hello");
-        Scanner sc = new Scanner(System.in);
+public class App extends Application {
 
-        // Testing:
-        Tunes.happyBirthday(60);
-        // Menu to choose what tune to play
-        int choice;
-        do {
-            System.out.println("Choose an option:");
-            System.out.println("1. Play user-entered notes");
-            System.out.println("2. Play notes from file");
-            System.out.println("3. Play Twinkle Twinkle Little Star");
-            System.out.println("4. Play Moonlight Sonata");
-            System.out.println("5. Exit");
-            choice = Integer.parseInt(sc.nextLine());
-            switch (choice) {
-                case 1 -> Tunes.getUserNotes();
-                case 2 -> {
-                    System.out.println("Enter filename: ");
-                    String filename = sc.nextLine();
-                    Tunes.playFile(filename);
-                }
-                case 3 -> Tunes.playFile(60);
-                case 4 -> Tunes.happyBirthday(60);
-                case 5 -> System.out.println("Exiting...");
-                default -> System.out.println("Invalid choice");
-            }
-        } while (choice != 5);
+    public static void main (String [] args){
+        launch(args);
+
+    }
+
+    public void start(Stage stage){
+        HBox root = new HBox();
+       
+        VBox playOptions = new VBox();
+        VBox settings = new VBox();
+        root.getChildren().addAll(settings,playOptions);
+       
+        Button buttonHappyBirthday = new Button("Happy birthday");
+        buttonHappyBirthday.setOnAction(event -> Tunes.happyBirthday());
+        Button buttonJingleBells = new Button("Jingle bells");
+        buttonJingleBells.setOnAction(event -> Tunes.jingleBells());
+        Button buttontwinkle = new Button("Twinkle Twinkle");
+        buttontwinkle.setOnAction(event -> Tunes.twinkle());
+   
+     
+        Slider sliderVolume = new Slider();
+        playOptions.getChildren().addAll(buttonHappyBirthday,buttonJingleBells,buttontwinkle);
+        
+        final Scene scene = new Scene(root, 500,500);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

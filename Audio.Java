@@ -6,13 +6,10 @@ import java.util.Scanner;
 //
 public class Audio {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] duration = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,};
-        String[] notes = Tunes.getUserNotes(sc.nextLine());
-        int[] noteCodes = Tunes.getNoteCodes(notes);
+       
 
 
-       Tunes.playNotes(noteCodes, duration);    
+       
     }
 
 
